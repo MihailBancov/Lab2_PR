@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  userservice:
+    image: userservice
+    build:
+      context: ./userservice
+    ports:
+      - "5000:80"  # Проброс порта 5000 на порт 80 внутри контейнера
+  orderservice:
+    image: orderservice
+    build:
+      context: ./orderservice
+    ports:
+      - "6000:80"  # Проброс порта 6000 на порт 80 внутри контейнера
+    depends_on:
+      - userservice
